@@ -1,0 +1,5 @@
+<launch>
+    <node name="skidpad_detector_node" pkg="skidpad_detector" type="skidpad_detector" output="screen">
+        <rosparam command="load" file="$(find skidpad_detector)/config/skidpad_detector.yaml" /> <!--Load parameters from config files-->
+    </node>
+</launch>

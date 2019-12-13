@@ -1,0 +1,15 @@
+cluster_filtered_topic_name: /perception/lidar_cluster
+
+skidpad_path_topic_name: /planning/global_path
+
+path:
+  skidpad_map: skidpad_detector/skidpad.pcd
+  path_x: skidpad_detector/path_x.txt
+  path_y: skidpad_detector/path_y.txt
+
+length:
+  start: 15.0
+  lidar2imu: 1.87
+  threshold: 0.7
+
+node_rate: 50   # [Herz]

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>template</name>
+  <version>1.0.0</version>
+  <description>The template package</description>
+  <maintainer email="chentairan@bitfsd.cn">Tairan Chen</maintainer>
+
+  <license>MIT</license>
+
+
+  <author>Tairan Chen</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!--For custom message import-->
+
+
+  <!--Other depends-->
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+
+  <export>
+  </export>
+</package>

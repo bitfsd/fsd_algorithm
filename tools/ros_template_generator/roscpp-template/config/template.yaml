@@ -1,0 +1,5 @@
+input_pose_topic_name: /localization/pose_in
+
+output_pose_topic_name: /localization/pose_out
+
+node_rate: 1   # [Herz]
