@@ -22,9 +22,9 @@ ICP matching is used to get the transform between lidar cluster points and known
 
 All parameters are set in the `./config/skidpad_detector.yaml`  
 
-`length/start` : Distance between track center and starting line
-`length/lidar2imu` : Distance between LiDAR and imu
-`length/threshold` : max threshold distance for points matching
+`length/start` : Distance between track center and starting line  
+`length/lidar2imu` : Distance between LiDAR and imu  
+`length/threshold` : max threshold distance for points matching  
 
 ## Step
 

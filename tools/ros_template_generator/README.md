@@ -7,5 +7,5 @@ Use template to generate a package for FSD-Project
 ```bash
 python3 generate.py
 ```
-select language : C++ or Python
+select language : C++ or Python  
 input : package name, object name, class name
