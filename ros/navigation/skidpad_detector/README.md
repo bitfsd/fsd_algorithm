@@ -28,7 +28,7 @@ All parameters are set in the `./config/skidpad_detector.yaml`
 
 ## Step
 
-* 1. Move package to your workspace, Copy ` ./config/path_x.txt ` , ` ./config/path_y.txt` ` ./config/skidpad.pcd` to `/home/.ros/skidpad_detector` (if not exist, create it)
+* 1. Move package to your workspace, Copy ` ./config/path_x.txt ` , ` ./config/path_y.txt` ` ./config/skidpad.pcd` to `/home/usrname/.ros/skidpad_detector` (if not exist, create it)
 * 2. Go to your workspace,  `catkin build`
 * 3. `source devel/setup.bash`
 * 4. `roslaunch skidpad_detector skidpad_detector.launch`
