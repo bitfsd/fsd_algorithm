@@ -1,0 +1,7 @@
+lidar_cluster_topic_name: /lidar_cluster
+
+line_path_topic_name: /global_path
+
+node_rate: 50   # [Herz]
+
+path_length: 80 # [m]
