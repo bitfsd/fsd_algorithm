@@ -1,6 +1,6 @@
-lidar_cluster_topic_name: /lidar_cluster
+lidar_cluster_topic_name: /perception/lidar_cluster
 
-line_path_topic_name: /global_path
+line_path_topic_name: /planning/global_path
 
 node_rate: 50   # [Herz]
 
