@@ -1,5 +1,5 @@
 <p align="center"> 
-<img src="resource/img/BITFSD_logo.jpg">
+<img src="resource/img/BITFSD_logo.png">
 </p>
 
 
