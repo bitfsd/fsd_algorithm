@@ -24,3 +24,7 @@ The repository consists of `ros` and `tools`,` ros` is organised in several top 
 Our goal is to provide a simple implementation of the competition. For ease of use, most ros node use the ros standard message type to send/recieve.  
 
 We will continue to open source our autonomous code, when this part is stable and simple enough.
+
+# Dataset and training
+
+Please visit this page for more details: [bitfsd/FSACOCO](https://github.com/bitfsd/FSACOCO)  
