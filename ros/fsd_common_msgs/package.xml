@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>fsd_common_msgs</name>
+  <version>0.0.0</version>
+  <description>Messages common to many packages</description>
+
+  <maintainer email="tairanchen@bitfsd.cn">Tairan Chen</maintainer>
+  <license>TODO</license>
+  <author email="tairanchen@bitfsd.cn">Tairan Chen</author>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>genmsg</buildtool_depend>
+  <!--For loading custom messages-->
+  <build_depend>message_generation</build_depend>
+  <build_export_depend>message_runtime</build_export_depend>
+  <exec_depend>message_runtime</exec_depend>
+
+  <!--Other depends-->
+  <depend>roscpp</depend>
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+
+  <export>
+  </export>
+</package>

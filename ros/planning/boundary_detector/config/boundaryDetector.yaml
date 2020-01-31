@@ -1,0 +1,41 @@
+# Subscriber
+
+local_map_topic_name: /local_map
+
+# Publisher
+
+boundary_detections_topic_name: /planning/boundary_detections
+
+visual_triangles_topic_name: /visualization/visual_triangles
+
+visual_boundary_topic_name: /visualization/visual_boundary
+
+visual_tree_topic_name: /visualization/visual_tree
+
+visual_path_topic_name: /visualization/visual_path
+
+# Params
+
+max_iter_num: 4
+
+max_search_num: 3
+
+max_beam_cost: 1.5
+
+# Weight
+
+beam_weight:
+  w_c: 1
+  w_k: 0.5
+  w_w: 0.25
+  w_d: 0.25
+
+path_weight:
+  w_k: 0.4
+  w_w: 0.2
+  w_c: 0.4
+  w_b: 0.2
+  w_r: 0.2
+
+
+node_rate: 50   # [Herz]

@@ -1,0 +1,5 @@
+<launch>
+    <node name="boundaryDetector_node" pkg="boundaryDetector" type="boundaryDetector" output="screen">
+        <rosparam command="load" file="$(find boundaryDetector)/config/boundaryDetector.yaml" /> <!--Load parameters from config files-->
+    </node>
+</launch>
