@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>boundaryDetector</name>
-  <version>0.0.0</version>
-  <description>Simple boundaryDetector node, that inputs "cone detections" and outputs array of points</description>
-  <maintainer email="killasipilin@gmail.com">chentairan</maintainer>
+  <name>boundary_detector</name>
+  <version>1.0.0</version>
+  <description>Simple boundary_detector node, that inputs map and outputs boundarys</description>
+  <maintainer email="tairanchen@bitfsd.cn">chentairan</maintainer>
   <license>TODO</license>
 
 
