@@ -53,7 +53,7 @@ void LineDetector::createPath() {
 
     for(int i=0; i<cluster.points.size();i++)
     {
-        if(cluster.points[i].y > 2 && cluster.points[i].y < -2)
+        if(cluster.points[i].y > 2 || cluster.points[i].y < -2)
             continue;
         for (int j=0; j<180; j++)
         {
