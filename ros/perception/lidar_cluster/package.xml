@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>lidar_cluster</name>
+  <version>0.0.0</version>
+  <description>Simple lidar_cluster node, that inputs "cone detections" and outputs array of points</description>
+  <maintainer email="killasipilin@gmail.com">chentairan</maintainer>
+  <license>TODO</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!--For custom message import-->
+  <depend>fsd_common_msgs</depend>
+
+  <!--Other depends-->
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>pcl_conversions</depend>
+  <depend>pcl_msgs</depend>
+  <depend>pcl_ros</depend>
+
+
+  <export>
+  </export>
+</package>

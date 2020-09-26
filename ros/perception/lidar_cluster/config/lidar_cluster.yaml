@@ -1,0 +1,5 @@
+raw_lidar_topic_name: /velodyne_points
+
+lidar_cluster_topic_name: /perception/lidar_cluster
+
+node_rate: 10   # [Herz]

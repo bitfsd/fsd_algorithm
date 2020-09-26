@@ -1,0 +1,5 @@
+<launch>
+    <node name="control_node" pkg="control" type="control" output="screen">
+        <rosparam command="load" file="$(find control)/config/acceleration.yaml" /> <!--Load parameters from config files-->
+    </node>
+</launch>
