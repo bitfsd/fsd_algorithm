@@ -7,7 +7,9 @@
 
 This repository is devoted to share the autonomous code of Beijing Institute of Technology Driverless Racing Team. Some simple version code of an autonomous FS race car and some helpful tools are included.
 
-The use of **Ubuntu 16.04 and ROS Kinetic** is assumed everywhere on this repository.
+The use of **Ubuntu 18.04 and ROS Melodic** is assumed everywhere on this repository.
+
+
 
 # Repository organisation
 
@@ -19,6 +21,10 @@ The repository consists of `ros` and `tools`,` ros` is organised in several top 
 
 **planning/** - folder for planning packages
 
+**control/** - folder for control packagess
+
+**interface_fssim/** - folder for communicating with simulator
+
 # Open source roadmap
 
 Our goal is to provide a simple implementation of the competition. For ease of use, most ros node use the ros standard message type to send/recieve.  
@@ -28,3 +34,8 @@ We will continue to open source our autonomous code, when this part is stable an
 # Dataset and training
 
 Please visit this page for more details: [bitfsd/FSACOCO](https://github.com/bitfsd/FSACOCO)  
+
+# DarkNet ROS
+
+Please visit this page for more details: [bitfsd/darknet_ros](https://github.com/bitfsd/darknet_ros) 
+

@@ -1,0 +1,7 @@
+<launch>
+    <param name="use_sim_time" value="true" />
+    
+    <node name="fssim_interface" pkg="fssim_interface" type="fssim_interface_node" output="screen">
+        <rosparam command="load" file="$(find fssim_interface)/config/config.yaml" /> <!--Load parameters from config files-->
+    </node>
+</launch>

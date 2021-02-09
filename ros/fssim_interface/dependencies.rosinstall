@@ -1,0 +1,3 @@
+- git:
+   local-name: src/fssim
+   uri: https://github.com/AMZ-Driverless/fssim.git

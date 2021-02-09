@@ -1,0 +1,5 @@
+<launch>
+    <node name="lidar_cluster_node" pkg="lidar_cluster" type="lidar_cluster" output="screen">
+        <rosparam command="load" file="$(find lidar_cluster)/config/lidar_cluster.yaml" /> <!--Load parameters from config files-->
+    </node>
+</launch>

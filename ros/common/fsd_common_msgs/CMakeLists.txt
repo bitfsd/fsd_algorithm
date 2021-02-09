@@ -15,6 +15,9 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(  # Tell catkin which custom message files to include
   FILES
   Cone.msg
+  ControlCommand.msg
+  CarState.msg
+  CarStateDt.msg
   Map.msg
   )
 
