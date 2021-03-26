@@ -25,6 +25,54 @@ The repository consists of `ros` and `tools`,` ros` is organised in several top 
 
 **interface_fssim/** - folder for communicating with simulator
 
+# Usage
+
+```bash
+# First, clone the repository
+git clone https://github.com/bitfsd/fsd_algorithm.git
+# Move the algorithm package to your workspace
+cp -r fsd_algorithm/ros "your_workspace_name_1"/src
+cd "your_workspace_name_1"
+# Install dependencies
+cd src/ros/control/controller/script
+sudo apt-get install python-catkin-tools
+sudo bash install_cppad.bash
+sudo bash install_ipopt.bash
+# Compile
+cd "your_workspace_name_1"
+catkin build
+source devel/setup.bash
+
+# Clone the simulator
+git clone https://github.com/bitfsd/fssim.git
+# Move the package to your second workspace
+cp -r fssim "your_workspace_name_2"/src
+cd "your_workspace_name_2"
+# Install dependencies
+source update_dependencies.sh
+sudo bash Download_model.sh
+# Compile
+catkin build
+source devel/setup.bash
+
+# Run simulation and control algorithm
+cd "your_workspace_name_2"
+source devel/setup.bash
+roslaunch fssim auto_fssim.launch
+# In the second terminal
+cd "your_workspace_name_1"
+source devel/setup.bash
+roslaunch fssim_interface only_interface.launch
+# In the third terminal
+cd "your_workspace_name_1"
+source devel/setup.bash
+roslaunch control trackdrive.launch
+# roslaunch control skidpad.launch
+# roslaunch control acceleration.launch
+```
+
+
+
 # Open source roadmap
 
 Our goal is to provide a simple implementation of the competition. For ease of use, most ros node use the ros standard message type to send/recieve.  

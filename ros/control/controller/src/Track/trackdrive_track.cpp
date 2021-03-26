@@ -100,7 +100,6 @@ bool Autox_Track::CalculateTraj(Trajectory &refline) {
     ROS_WARN("Trajectory is empty !");
     return false;
   }
-  int ahead = param_.look_ahead;
   refline.clear();
   TrajectoryPoint tmp_pt;
 

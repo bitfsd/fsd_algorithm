@@ -44,6 +44,7 @@ bool Skidpad_Track::genTraj() {
   for (double i = -2.0; i < (car_length + forward_distance); i += interval) {
     tmp_pt.pts.x = i;
     tmp_pt.pts.y = 0;
+    tmp_pt.yaw = 0;
     trajectory_.push_back(tmp_pt);
   }
 
@@ -51,6 +52,7 @@ bool Skidpad_Track::genTraj() {
   for (double i = 0; i < 4 * M_PI; i += interval / circle_radius) {
     tmp_pt.pts.x = circle_radius * std::cos(90 * M_PI / 180 - i) + right_circle_x;
     tmp_pt.pts.y = circle_radius * std::sin(90 * M_PI / 180 - i) + right_circle_y;
+    tmp_pt.yaw = -i;
     trajectory_.push_back(tmp_pt);
   }
 
@@ -58,6 +60,7 @@ bool Skidpad_Track::genTraj() {
   for (double i = 0; i < 4 * M_PI; i += interval / circle_radius) {
     tmp_pt.pts.x = circle_radius * std::cos(-90 * M_PI / 180 + i) + left_circle_x;
     tmp_pt.pts.y = circle_radius * std::sin(-90 * M_PI / 180 + i) + left_circle_y;
+    tmp_pt.yaw = i;
     trajectory_.push_back(tmp_pt);
   }
 
@@ -65,6 +68,7 @@ bool Skidpad_Track::genTraj() {
   for (float i = car_length + forward_distance; i < (car_length + forward_distance) + 15; i += interval) {
     tmp_pt.pts.x = i;
     tmp_pt.pts.y = 0;
+    tmp_pt.yaw = 0;
     trajectory_.push_back(tmp_pt);
   }
 
