@@ -1,12 +1,12 @@
 #!/bin/bash
 # Pass the Ipopt source directory as the first argument
 
-#sudo apt-get -y install gfortran
+sudo apt-get -y install gfortran
 
-#if ( ldconfig -p | grep libipopt ); then
-#    echo "Ipopt is already installed......."
-#    exit
-#fi
+if ( ldconfig -p | grep libipopt ); then
+    echo "Ipopt is already installed......."
+    exit
+fi
 
 echo "Downloading Ipopt-3.12.7"
 
