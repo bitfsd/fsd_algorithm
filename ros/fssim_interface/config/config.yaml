@@ -31,7 +31,7 @@ fsd:
   state: "/estimation/slam/state"  #车辆位置
   map: "/map" #全局地图
   localmap: "/localmap"
-  lidar_cluster: "/lidar_cluster"
+  lidar_cluster: "/perception/lidar_cluster"
   tf:
     origin: "/map"
     fsd_car_base_link: "/base_link"

@@ -1,7 +1,9 @@
 lidar_cluster_topic_name: /perception/lidar_cluster
 
-line_path_topic_name: /planning/global_path
+end_point_topic_name: /planning/end_point
+
+allow_angle_error: 1.0 # degree
 
 node_rate: 50   # [Herz]
 
-path_length: 80 # [m]
+path_length: 82 # [m]

@@ -33,7 +33,7 @@ class LineDetector {
   LineDetector(ros::NodeHandle& nh);
 
 	// Getters
-  nav_msgs::Path getlinePath();
+  geometry_msgs::Point getendPoint();
 
 	// Setters
   void setlidarCluster(sensor_msgs::PointCloud msgs);
@@ -45,10 +45,11 @@ private:
 	ros::NodeHandle& nh_;
 	
   sensor_msgs::PointCloud cluster;
-  nav_msgs::Path path;
+  geometry_msgs::Point end_point;
 
   bool getPath = false;
   double path_length;
+  double allow_angle_error;
 
   void createPath();
 };

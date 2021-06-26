@@ -39,17 +39,16 @@ class LineDetectorHandle {
   void publishToTopics();
   void run();
   void sendMsg();
-//  void sendVisualization();
 
  private:
   ros::NodeHandle nodeHandle_;
   ros::Subscriber lidarClusterSubscriber_;
-  ros::Publisher linePathPublisher_;
+  ros::Publisher endPointPublisher_;
 
   void lidarClusterCallback(const sensor_msgs::PointCloud &msg);
 
   std::string lidar_cluster_topic_name_;
-  std::string line_path_topic_name_;
+  std::string end_point_topic_name_;
 
   int node_rate_;
 

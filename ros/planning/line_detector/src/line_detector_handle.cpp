@@ -43,10 +43,10 @@ void LineDetectorHandle::loadParameters() {
                                       "/lidar_cluster")) {
     ROS_WARN_STREAM("Did not load lidar_cluster_topic_name. Standard value is: " << lidar_cluster_topic_name_);
   }
-  if (!nodeHandle_.param<std::string>("line_path_topic_name",
-                                      line_path_topic_name_,
-                                      "/global_path")) {
-    ROS_WARN_STREAM("Did not load line_path_topic_name. Standard value is: " << line_path_topic_name_);
+  if (!nodeHandle_.param<std::string>("end_point_topic_name",
+                                      end_point_topic_name_,
+                                      "/planning/end_point")) {
+    ROS_WARN_STREAM("Did not load end_point_topic_name. Standard value is: " << end_point_topic_name_);
   }
   if (!nodeHandle_.param("node_rate", node_rate_, 50)) {
     ROS_WARN_STREAM("Did not load node_rate. Standard value is: " << node_rate_);
@@ -60,7 +60,7 @@ void LineDetectorHandle::subscribeToTopics() {
 
 void LineDetectorHandle::publishToTopics() {
   ROS_INFO("publish to topics");
-  linePathPublisher_ = nodeHandle_.advertise<nav_msgs::Path>(line_path_topic_name_, 1);
+  endPointPublisher_ = nodeHandle_.advertise<geometry_msgs::Point>(end_point_topic_name_, 1);
 }
 
 void LineDetectorHandle::run() {
@@ -69,7 +69,7 @@ void LineDetectorHandle::run() {
 }
 
 void LineDetectorHandle::sendMsg() {
-  linePathPublisher_.publish(line_detector_.getlinePath());
+  endPointPublisher_.publish(line_detector_.getendPoint());
 }
 
 void LineDetectorHandle::lidarClusterCallback(const sensor_msgs::PointCloud &msg) {

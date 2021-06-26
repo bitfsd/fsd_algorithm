@@ -28,47 +28,49 @@ The repository consists of `ros` and `tools`,` ros` is organised in several top 
 # Usage
 
 ```bash
-# First, clone the repository
+# First, clone the repository and move the algorithm package to your workspace
 git clone https://github.com/bitfsd/fsd_algorithm.git
-# Move the algorithm package to your workspace
 cp -r fsd_algorithm/ros "your_workspace_name_1"/src
-cd "your_workspace_name_1"
+
 # Install dependencies
-cd src/ros/control/controller/script
+cd ~/"your_workspace_name_1"/src/ros/control/controller/script
 sudo apt-get install python-catkin-tools
 sudo bash install_cppad.bash
 sudo bash install_ipopt.bash
-# Compile
-cd "your_workspace_name_1"
-catkin build
-source devel/setup.bash
 
-# Clone the simulator
+# Compile
+cd ~/"your_workspace_name_1"
+catkin build
+
+# Second, clone the simulator and move the package to your second workspace
 git clone https://github.com/bitfsd/fssim.git
-# Move the package to your second workspace
 cp -r fssim "your_workspace_name_2"/src
-cd "your_workspace_name_2"
+
 # Install dependencies
+cd ~/"your_workspace_name_2"/src/fssim
 source update_dependencies.sh
 sudo bash Download_model.sh
-# Compile
-catkin build
-source devel/setup.bash
 
-# Run simulation and control algorithm
+# Compile
+cd ~/"your_workspace_name_2"
+catkin build
+
+# Third, run simulation
 cd "your_workspace_name_2"
 source devel/setup.bash
 roslaunch fssim auto_fssim.launch
-# In the second terminal
+
+# and run fssim_interface
 cd "your_workspace_name_1"
 source devel/setup.bash
-roslaunch fssim_interface only_interface.launch
-# In the third terminal
+roslaunch fssim_interface fssim_interface only_interface.launch
+
+# Finally, run the fsd algorithm
 cd "your_workspace_name_1"
 source devel/setup.bash
-roslaunch control trackdrive.launch
-# roslaunch control skidpad.launch
-# roslaunch control acceleration.launch
+roslaunch fsd_common_meta trackdrive.launch
+# roslaunch fsd_common_meta skidpad.launch
+# roslaunch fsd_Common_meta acceleration.launch
 ```
 
 

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- for perception -->
+  <include file="$(find skidpad_detector)/launch/skidpad_detector.launch"/>
+	<include file="$(find lidar_cluster)/launch/lidar_cluster.launch"/>
+  <!-- for localization -->
+  <!-- for control-->
+  <include file="$(find control)/launch/skidpad.launch"/>
+
+</launch>

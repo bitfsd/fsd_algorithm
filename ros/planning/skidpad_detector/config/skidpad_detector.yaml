@@ -1,11 +1,11 @@
 cluster_filtered_topic_name: /perception/lidar_cluster
 
-skidpad_path_topic_name: /planning/global_path
+transform_matrix_topic_name: /transform_matrix
 
 path:
-  skidpad_map: skidpad_detector/skidpad.pcd
-  path_x: skidpad_detector/path_x.txt
-  path_y: skidpad_detector/path_y.txt
+  skidpad_map: /home/feng1909/fsd_algorithm/ros/planning/skidpad_detector/config/skidpad.pcd
+  path_x: /home/feng1909/fsd_algorithm/ros/planning/skidpad_detector/config/path_x.txt
+  path_y: /home/feng1909/fsd_algorithm/ros/planning/skidpad_detector/config/path_y.txt
 
 length:
   start: 15.0

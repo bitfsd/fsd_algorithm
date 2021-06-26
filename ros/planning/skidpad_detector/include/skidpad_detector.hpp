@@ -22,7 +22,9 @@
 
 #include "std_msgs/String.h"
 #include "nav_msgs/Path.h"
+#include "std_msgs/Float32.h"
 #include "sensor_msgs/PointCloud.h"
+#include "std_msgs/Float64MultiArray.h"
 #include "geometry_msgs/Point32.h"
 #include "geometry_msgs/PoseStamped.h"
 #include "pcl/io/pcd_io.h"
@@ -40,7 +42,7 @@ class SkidpadDetector {
   SkidpadDetector(ros::NodeHandle& nh);
 
 	// Getters
-  nav_msgs::Path getPath();
+  std_msgs::Float64MultiArray getTransMatrix();
 
 	// Setters
   void setclusterFiltered(sensor_msgs::PointCloud msg);
@@ -58,10 +60,11 @@ private:
   bool getClusterFlag, matchFlag;
   sensor_msgs::PointCloud cluster, skidpad_map;
   nav_msgs::Path trans_path, standard_path;
+  std_msgs::Float64MultiArray trans_matrix_in_1D;
+  Eigen::Matrix4f transformation;
 
   void loadParameters();
   void loadFiles();
-  void Pathcreate(Eigen::Matrix4f RT_Matrix);
 };
 }
 

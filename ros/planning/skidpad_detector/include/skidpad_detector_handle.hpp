@@ -43,12 +43,12 @@ class SkidpadDetectorHandle {
  private:
   ros::NodeHandle nodeHandle_;
   ros::Subscriber clusterFilteredSubscriber_;
-  ros::Publisher skidpadPathPublisher_;
+  ros::Publisher transformMatrixPublisher_;
 
   void clusterFilteredCallback(const sensor_msgs::PointCloud& msg);
 
   std::string cluster_filtered_topic_name_;
-  std::string skidpad_path_topic_name_;
+  std::string transform_matrix_topic_name_;
 
   int node_rate_;
 

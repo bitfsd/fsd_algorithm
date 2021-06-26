@@ -43,10 +43,10 @@ void SkidpadDetectorHandle::loadParameters() {
                                       "/perception/lidar_cluster")) {
     ROS_WARN_STREAM("Did not load cluster_filtered_topic_name. Standard value is: " << cluster_filtered_topic_name_);
   }
-  if (!nodeHandle_.param<std::string>("skidpad_path_topic_name",
-                                      skidpad_path_topic_name_,
-                                      "/planning/global_path")) {
-    ROS_WARN_STREAM("Did not load skidpad_path_topic_name. Standard value is: " << skidpad_path_topic_name_);
+  if (!nodeHandle_.param<std::string>("transform_matrix_topic_name",
+                                      transform_matrix_topic_name_,
+                                      "/transform_matrix")) {
+    ROS_WARN_STREAM("Did not load transform_matrix_topic_name. Standard value is: " << transform_matrix_topic_name_);
   }
   if (!nodeHandle_.param("node_rate", node_rate_, 50)) {
     ROS_WARN_STREAM("Did not load node_rate. Standard value is: " << node_rate_);
@@ -60,7 +60,7 @@ void SkidpadDetectorHandle::subscribeToTopics() {
 
 void SkidpadDetectorHandle::publishToTopics() {
   ROS_INFO("publish to topics");
-  skidpadPathPublisher_ = nodeHandle_.advertise<nav_msgs::Path>(skidpad_path_topic_name_, 1);
+  transformMatrixPublisher_ = nodeHandle_.advertise<std_msgs::Float64MultiArray>(transform_matrix_topic_name_, 1);
 }
 
 void SkidpadDetectorHandle::run() {
@@ -69,7 +69,7 @@ void SkidpadDetectorHandle::run() {
 }
 
 void SkidpadDetectorHandle::sendMsg() {
-  skidpadPathPublisher_.publish(skidpad_detector_.getPath());
+  transformMatrixPublisher_.publish(skidpad_detector_.getTransMatrix());
 }
 
 void SkidpadDetectorHandle::clusterFilteredCallback(const sensor_msgs::PointCloud& msg) {

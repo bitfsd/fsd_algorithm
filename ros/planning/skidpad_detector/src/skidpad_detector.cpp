@@ -31,7 +31,14 @@ SkidpadDetector::SkidpadDetector(ros::NodeHandle &nh) : nh_(nh) {
 };
 
 // Getters
-nav_msgs::Path SkidpadDetector::getPath() { return trans_path; }
+std_msgs::Float64MultiArray SkidpadDetector::getTransMatrix() {
+  trans_matrix_in_1D.data.clear();
+  for (int i = 0; i < transformation.rows(); i++)
+    for (int j = 0; j < transformation.cols(); j++) {
+      trans_matrix_in_1D.data.push_back(transformation(i, j));
+    }
+  return trans_matrix_in_1D;
+}
 
 // Setters
 void SkidpadDetector::setclusterFiltered(sensor_msgs::PointCloud msg) {
@@ -76,7 +83,7 @@ void SkidpadDetector::loadFiles() {
   pcl::PointCloud<pcl::PointXYZ> source_cloud;
 	geometry_msgs::Point32 tmp_cloud;
 	pcl::io::loadPCDFile (path_pcd_,source_cloud);
-
+  ROS_INFO_STREAM("load files");
   // The front is the x-axis, and the left is the y-axis
 	for(int i = 0; i < source_cloud.points.size(); i++)
 	{
@@ -119,7 +126,7 @@ void SkidpadDetector::runAlgorithm() {
   {
     double min_dist = std::numeric_limits<double>::infinity();
     int index = -1;
-    for(int j = 0; j < cluster.points.size(); i++)
+    for(int j = 0; j < cluster.points.size(); j++)
     {
       double dist = std::hypot(skidpad_map.points[i].x - cluster.points[j].x, skidpad_map.points[i].y - cluster.points[j].y);
       if(min_dist > dist) {
@@ -150,31 +157,14 @@ void SkidpadDetector::runAlgorithm() {
 	icp.setMaximumIterations(100);
   icp.align(Final);
 
+  ROS_INFO_STREAM("icp finish");
+
   std::cout << "has converged:" << icp.hasConverged() << " score: " << icp.getFitnessScore() << std::endl;
-	Eigen::Matrix4f transformation = icp.getFinalTransformation();
+	transformation = icp.getFinalTransformation();
 	std::cout <<transformation<<std::endl;
 	std::cout <<"------------------------------------------------\n";
 
   matchFlag = true;
-	Pathcreate(transformation);
-}
-
-void SkidpadDetector::Pathcreate(Eigen::Matrix4f RT_Matrix)
-{
-	trans_path.poses.resize(standard_path.poses.size());
-	for (int i = 0; i < standard_path.poses.size(); i++)
-  {
-    double temp_x,temp_y;
-		temp_x = standard_path.poses[i].pose.position.x;
-		temp_y = standard_path.poses[i].pose.position.y;
-		Eigen::Vector4f temp(temp_x,temp_y, 0, 1);
-		Eigen::Vector4f result = RT_Matrix*temp;
-		trans_path.poses[i].header.frame_id = "map";
-		trans_path.poses[i].header.stamp = ros::Time::now();
-		trans_path.poses[i].pose.position.y = result[1]/result[3];
-		trans_path.poses[i].pose.position.x = result[0]/result[3];
-  }
-	trans_path.header.frame_id = "map";
 }
 
 }

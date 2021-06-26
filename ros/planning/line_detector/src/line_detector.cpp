@@ -27,10 +27,13 @@ LineDetector::LineDetector(ros::NodeHandle &nh) : nh_(nh) {
     if (!nh.param<double>("path_length", path_length, 80)) {
         ROS_WARN_STREAM("Did not load path_length. Standard value is: " << path_length);
     }
+    if (!nh.param<double>("allow_angle_error", allow_angle_error, 1.0)) {
+        ROS_WARN_STREAM("Did not load allow_angle_error. Standard value is: " << allow_angle_error);
+    }
 };
 
 // Getters
-nav_msgs::Path LineDetector::getlinePath() { return path; }
+geometry_msgs::Point LineDetector::getendPoint() { return end_point; }
 
 // Setters
 void LineDetector::setlidarCluster(sensor_msgs::PointCloud msgs) {
@@ -50,7 +53,6 @@ void LineDetector::createPath() {
     int accumulator[180][201]={0};
     double p,p1,p2,Y_right,Y_left;
     int theta1,theta2;
-
     for(int i=0; i<cluster.points.size();i++)
     {
         if(cluster.points[i].y > 2 || cluster.points[i].y < -2)
@@ -58,7 +60,6 @@ void LineDetector::createPath() {
         for (int j=0; j<180; j++)
         {
             p=(cluster.points[i].x * cos(j * M_PI / 180)+cluster.points[i].y*sin(j * M_PI / 180))*5;
-            
             if(p > 100)
                 p = 100;
             accumulator[j][(int)p+100]+=1;            
@@ -68,7 +69,7 @@ void LineDetector::createPath() {
     int max1 = 0;
     int max2 = 0;
 
-    for(int i = 0; i < 180; i++)
+    for(int i = 90 - allow_angle_error; i < 90 + allow_angle_error; i++)
     {
         for(int j = 0; j < 100; j++)
         {
@@ -81,7 +82,7 @@ void LineDetector::createPath() {
         }
     }
    
-    for(int i = 0; i < 180; i++)
+    for(int i = 90 - allow_angle_error; i < 90 + allow_angle_error; i++)
     {
         for(int j = 100; j < 200; j++)
         {
@@ -93,9 +94,6 @@ void LineDetector::createPath() {
             }
         }
     }
-
-    Y_right = (p1-path_length*cos((float)theta1*M_PI/180.0))/sin((float)theta1*M_PI/180.0);
-    Y_left = (p2-path_length*cos((float)theta2*M_PI/180.0))/sin((float)theta2*M_PI/180.0);
 
     if (theta1==theta2)
 	{
@@ -120,19 +118,11 @@ void LineDetector::createPath() {
         }
     }
 
-    path.poses.clear();
+    Y_right = (p1-path_length*cos((float)theta1*M_PI/180.0))/sin((float)theta1*M_PI/180.0);
+    Y_left = (p2-path_length*cos((float)theta2*M_PI/180.0))/sin((float)theta2*M_PI/180.0);
 
-    geometry_msgs::PoseStamped waypoint;
-    waypoint.pose.position.x = 0;
-    waypoint.pose.position.y = 0;
-    path.poses.push_back(waypoint);
-
-    waypoint.pose.position.x = path_length;
-    waypoint.pose.position.y = (Y_left + Y_right)/2;
-    path.poses.push_back(waypoint);
-
-    path.header.frame_id = "/map";
-    path.header.stamp = ros::Time::now();
+    end_point.x = path_length;
+    end_point.y = (Y_left + Y_right)/2;
 }
 
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="2">
+  <!--TODO: Fill in these parts with your package info-->
+  <name>fsd_common_meta</name>
+  <version>0.0.0</version>
+  <description>Meta package for car launching</description>
+  <maintainer email="sonjabritss@gmail.com">Sonja Brits</maintainer>
+  <license>TODO</license>
+  <author email="sonjabritss@gmail.com">Sonja Brits</author>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>perception_meta</depend>
+  <depend>estimation_meta</depend>
+  <depend>control_meta</depend>
+
+  <export>
+  </export>
+</package>
