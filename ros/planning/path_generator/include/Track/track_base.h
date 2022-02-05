@@ -18,6 +18,7 @@
 */
 
 #pragma once
+
 #include "fsd_common_msgs/Map.h"
 #include "geometry_msgs/Point.h"
 #include "geometry_msgs/Point32.h"
@@ -28,27 +29,33 @@
 
 #include <vector>
 
-namespace ns_control {
+namespace ns_path_generator {
 
-class Track {
- public:
-  Track() = default;
-  ~Track() = default;
+    class Track {
+    public:
+        Track() = default;
 
-  virtual bool genTraj() = 0;
-  virtual bool CalculateTraj(Trajectory &refline) = 0;
-  void setMap(const fsd_common_msgs::Map &map);
-  void setState(const VehicleState &state);
-  void setTransMat(const Eigen::Matrix4f &transMat);
-  void setEndPoint(const geometry_msgs::Point &endPoint);
+        ~Track() = default;
 
- protected:
-  fsd_common_msgs::Map map_;
-  VehicleState state_;
-  Trajectory trajectory_;
-  geometry_msgs::Point endPoint_; // an endpoint for acceleration
-  Eigen::Matrix4f transMat_;
+        virtual bool genTraj() = 0;
 
-};
+        virtual bool CalculateTraj(Trajectory &refline) = 0;
 
-} // namespace ns_control
+        void setMap(const fsd_common_msgs::Map &map);
+
+        void setState(const VehicleState &state);
+
+        void setTransMat(const Eigen::Matrix4f &transMat);
+
+        void setEndPoint(const geometry_msgs::Point &endPoint);
+
+    protected:
+        fsd_common_msgs::Map map_;
+        VehicleState state_;
+        Trajectory trajectory_;
+        geometry_msgs::Point endPoint_; // an endpoint for acceleration
+        Eigen::Matrix4f transMat_;
+
+    };
+
+} // namespace ns_path_generator

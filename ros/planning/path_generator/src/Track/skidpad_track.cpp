@@ -22,7 +22,7 @@
 
 Param param_;
 
-namespace ns_control {
+namespace ns_path_generator {
 
 bool Skidpad_Track::genTraj() {
 
@@ -152,4 +152,4 @@ bool Skidpad_Track::CalculateTraj(Trajectory &refline) {
   }
 }
 
-}//namespace ns_control
+}//namespace ns_path_generator

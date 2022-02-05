@@ -1,0 +1,33 @@
+# Subscriber
+car_state_topic_name: /estimation/slam/state
+
+end_point_topic_name: /planning/end_point
+
+# Publisher
+path_generate_topic_name: /planning/ref_path
+
+ref_path_topic_name: /visual/ref_path
+
+# Track params:
+desire_vel: 10.0
+
+car_length: 1.88
+
+look_ahead: 20
+
+interval: 0.05
+
+max_lat_acc: 3.0
+
+# other params:
+N: 40
+
+dt: 0.04
+
+initial_velocity: 2
+
+mission: acceleration          # [trackdrive, skidpad, acceleration]
+
+simulation: true
+
+node_rate: 100   # [Herz]

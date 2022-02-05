@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>path_generator</name>
+  <version>1.0.0</version>
+  <description>path_generator node</description>
+  <maintainer email="tairanchen@bitfsd.cn">chentairan</maintainer>
+  <license>MIT</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!--For custom message import-->
+
+  <!--Other depends-->
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>nav_msgs</depend>
+
+  <export>
+  </export>
+</package>

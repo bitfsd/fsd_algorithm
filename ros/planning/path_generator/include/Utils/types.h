@@ -16,7 +16,7 @@
 #include <cmath>
 #include <vector>
 
-namespace ns_control {
+namespace ns_path_generator {
     struct VehicleState {
         double x;
         double y;
@@ -57,6 +57,6 @@ namespace ns_control {
 
     typedef std::vector<TrajectoryPoint> Trajectory;
 
-} // namespace waypoint_follower
+}
 
 #endif

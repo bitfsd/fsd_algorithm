@@ -39,3 +39,6 @@ clion-cmake/*
 # Profiler files
 *.prof
 *.pdf
+
+# IPOPT
+Ipopt-3.12.7/*

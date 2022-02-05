@@ -2,7 +2,8 @@
 <launch>
   <!-- for perception -->
   <include file="$(find lidar_cluster)/launch/lidar_cluster.launch"/>
-  <!-- for localization -->
+  <!-- for planning -->
+  <include file="$(find path_generator)/launch/trackdrive.launch"/>
   <!-- for control-->
   <include file="$(find control)/launch/trackdrive.launch"/>
 

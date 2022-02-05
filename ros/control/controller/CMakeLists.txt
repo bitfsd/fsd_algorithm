@@ -46,22 +46,22 @@ include_directories(
         ${EIGEN3_INCLUDE_DIRS}
         ${catkin_INCLUDE_DIRS}
         ${IPOPT_INCLUDE_DIRS}
-        /usr/include/eigen3 
+        /usr/include/eigen3
 )
 
 add_executable(${PROJECT_NAME}
         src/control.cpp
         src/control_handle.cpp
-        src/main.cpp 
+        src/main.cpp
         include/Utils/types.h
-        src/Track/track_base.cpp
-        src/Track/trackdrive_track.cpp
-        src/Track/line_track.cpp
-        src/Track/skidpad_track.cpp
+#        src/Track/track_base.cpp
+#        src/Track/trackdrive_track.cpp
+#        src/Track/line_track.cpp
+#        src/Track/skidpad_track.cpp
         src/Solver/solver_base.cpp
         src/Solver/mpc_solver.cpp
         src/Solver/pure_pursuit_solver.cpp
-	src/Utils/visual.cpp)
+        src/Utils/visual.cpp)
 
 target_link_libraries(${PROJECT_NAME}
         ${catkin_LIBRARIES}

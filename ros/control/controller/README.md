@@ -28,29 +28,14 @@ sudo bash install_cppad.bash
 
 ## ROS topic
 
-### Acceleration Mission
+#### **Subscriber**
 
-* **Subscriber**
-  * /estimation/slam/state
-  * /planning/end_point
-* **Publisher**
-  * /control/pure_pursuit/control_command
+* /estimation/slam/state
+* /planning/ref_path
 
-### Skidpad Mission
+#### **Publisher**
 
-* **Subscriber**
-  * /estimation/slam/state
-  * /transform_matrix
-* **Publisher**
-  * /control/pure_pursuit/control_command
-
-### **Trackdrive Mission**
-
-* **Subscriber**
-  * /map
-  * /estimation/slam/state
-* **Publisher**
-  * /control/pure_pursuit/control_command
+* /control/pure_pursuit/control_command
 
 ## Step
 
@@ -95,7 +80,7 @@ In the `./config` folder, we provide three `.yaml` files. Each file contains dif
 ## Note:
 
 * Remember to adjust the `car_length` in the `.yaml` file, once you want to run different racecar.
-* If you want to be faster, you can change the  `desire_vel` in `.yaml` file.
-* Topic `/transform_matrix` comes from [skidpad detector](https://github.com/bitfsd/fsd_algorithm/tree/master/ros/planning/skidpad_detector).
-* Topic `/planning/end_point` comes form [line detector](https://github.com/bitfsd/fsd_algorithm/tree/master/ros/planning/line_detector).
+* If you want to be faster, you can change the  `desire_vel` in `.yaml` file. Note that the MPC controller's velocity is related to the velocity of the reference path from [path_generator](https://github.com/bitfsd/fsd_algorithm/tree/master/ros/planning/path_generator).
+
+  
 

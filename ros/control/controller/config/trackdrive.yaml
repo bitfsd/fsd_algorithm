@@ -1,12 +1,10 @@
 # Subscriber
 car_state_topic_name: /estimation/slam/state
 
-map_topic_name: /map
+ref_path_topic_name: /planning/ref_path
 
 # Publisher
 ctrl_cmd_topic_name: /control/pure_pursuit/control_command
-
-ref_path_topic_name: /visual/ref_path
 
 predict_path_topic_name: /visual/pre_path
 
@@ -25,7 +23,7 @@ weight:
   desire_vel: 15
 
 # Pure Pursuit params:
-desire_vel: 3
+desire_vel: 7
 
 car_length: 1.88
 

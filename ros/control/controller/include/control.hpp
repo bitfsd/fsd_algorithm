@@ -24,10 +24,8 @@
 #include "Utils/param.h"
 #include "Utils/visual.h"
 
-#include "Track/track_base.h"
-#include "Track/trackdrive_track.h"
-#include "Track/line_track.h"
-#include "Track/skidpad_track.h"
+#include "fsd_common_msgs/Trajectory.h"
+#include "fsd_common_msgs/TrajectoryPoint.h"
 
 #include "Solver/solver_base.h"
 #include "Solver/mpc_solver.h"
@@ -35,56 +33,43 @@
 
 namespace ns_control {
 
-class Control {
+    class Control {
 
- public:
-  Control(ros::NodeHandle &nh);
+    public:
+        Control(ros::NodeHandle &nh);
 
-  void runAlgorithm();
+        void runAlgorithm();
 
-  void setTransMat(const std_msgs::Float64MultiArray &msgs);
-  void setEndPoint(const geometry_msgs::Point &msgs);
-  void setMap(const fsd_common_msgs::Map &msgs);
-  void setCarState(const fsd_common_msgs::CarState &msgs);
-  visualization_msgs::MarkerArray getRefPath();
-  visualization_msgs::MarkerArray getPrePath();
+        void setCarState(const fsd_common_msgs::CarState &msgs);
 
-  fsd_common_msgs::ControlCommand getCmd();
+        void setTrack(const Trajectory &msgs);
 
-  visualization_msgs::MarkerArray RefPath_;
-  visualization_msgs::MarkerArray PrePath_;
+        visualization_msgs::MarkerArray getPrePath();
 
- private:
+        fsd_common_msgs::ControlCommand getCmd();
 
-  bool Check();
-  void setTrack();
+        visualization_msgs::MarkerArray PrePath_;
 
- private:
+    private:
 
-  ros::NodeHandle &nh_;
+        bool Check();
 
-  std::string mission_;
-  std::string controller_;
+    private:
 
-  Track *track_;
-  Autox_Track trackdrive_track_;
-  Line_Track line_track_;
-  Skidpad_Track skidpad_track_;
+        ros::NodeHandle &nh_;
+        std::string controller_;
 
-  Solver *solver_;
-  MPC_Solver mpc_solver_;
-  Pure_Pursuit_Solver pure_pursuit_solver_;
+        Solver *solver_;
+        MPC_Solver mpc_solver_;
+        Pure_Pursuit_Solver pure_pursuit_solver_;
 
-  geometry_msgs::Point endPoint_;
-  Eigen::Matrix4f transMat_;
-  fsd_common_msgs::Map local_map_;
-  fsd_common_msgs::CarState car_state_;
-  fsd_common_msgs::ControlCommand cmd_;
+        fsd_common_msgs::CarState car_state_;
+        fsd_common_msgs::ControlCommand cmd_;
 
-  Trajectory refline_;
+        Trajectory refline_;
 
-  bool is_init = false;
-};
+        bool is_init = false;
+    };
 }
 
 #endif //CONTROL_HPP

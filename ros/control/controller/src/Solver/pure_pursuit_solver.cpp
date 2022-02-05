@@ -32,9 +32,9 @@ void Pure_Pursuit_Solver::solve() {
         return;
     }
 
-    double desire_vel = param_.desire_vel;
+    double desire_vel = control_param_.desire_vel;
 
-    const auto i_next = param_.look_ahead;
+    const auto i_next = control_param_.look_ahead;
     geometry_msgs::Point32 next_point;
 
     { // Steering Control

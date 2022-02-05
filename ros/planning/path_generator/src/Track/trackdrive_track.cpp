@@ -20,7 +20,7 @@
 #include "Track/trackdrive_track.h"
 #include "ros/ros.h"
 
-namespace ns_control {
+namespace ns_path_generator {
 
 bool Autox_Track::genTraj() {
   if (map_.cone_blue.empty() || map_.cone_red.empty())
@@ -158,4 +158,4 @@ bool Autox_Track::CalculateTraj(Trajectory &refline) {
   }
 }
 
-}//namespace ns_control
+}//namespace ns_path_generator

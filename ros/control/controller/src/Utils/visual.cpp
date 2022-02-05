@@ -36,8 +36,8 @@ void visual_trajectory(const Trajectory &traj,
 }
 
 void color_map(double vel, std::vector<float> &color) {
-  double temp = (vel - param_.initial_velocity) /
-                (param_.desire_vel - param_.initial_velocity);
+  double temp = (vel - control_param_.initial_velocity) /
+                (control_param_.desire_vel - control_param_.initial_velocity);
   if (temp > 1)
     temp = 1;
   if (temp < 0)
