@@ -33,9 +33,9 @@ namespace ns_control {
 
   Trajectory refline_;
 
-  const size_t N = param_.N;
-  const double dt = param_.dt;
-  const double Lf = param_.car_length;
+  const size_t N = control_param_.N;
+  const double dt = control_param_.dt;
+  const double Lf = control_param_.car_length;
 
   const int px_range_begin       = 0;
   const int py_range_begin       = px_range_begin    + N;
@@ -62,17 +62,17 @@ namespace ns_control {
     const double desired_cte = 0.0;
     const double desired_epsi = 0.0;
 
-    const double cost_func_px_weight = param_.weight.px;
-    const double cost_func_py_weight = param_.weight.py;
-    const double cost_func_pyaw_weight = param_.weight.pyaw;
+    const double cost_func_px_weight = control_param_.weight.px;
+    const double cost_func_py_weight = control_param_.weight.py;
+    const double cost_func_pyaw_weight = control_param_.weight.pyaw;
 
-    const double cost_func_cte_weight = param_.weight.cte;
-    const double cost_func_epsi_weight = param_.weight.epsi;
-    const double cost_func_v_weight = param_.weight.v;
-    const double cost_func_steer_weight = param_.weight.steer;
-    const double cost_func_throttle_weight = param_.weight.throttle;
-    const double cost_func_steer_rate_weight = param_.weight.steer_rate;
-    const double cost_func_throttle_rate_weight = param_.weight.throttle_rate;
+    const double cost_func_cte_weight = control_param_.weight.cte;
+    const double cost_func_epsi_weight = control_param_.weight.epsi;
+    const double cost_func_v_weight = control_param_.weight.v;
+    const double cost_func_steer_weight = control_param_.weight.steer;
+    const double cost_func_throttle_weight = control_param_.weight.throttle;
+    const double cost_func_steer_rate_weight = control_param_.weight.steer_rate;
+    const double cost_func_throttle_rate_weight = control_param_.weight.throttle_rate;
 
     fg[0] = 0.0;
     for (int t = 0; t < N; t++)

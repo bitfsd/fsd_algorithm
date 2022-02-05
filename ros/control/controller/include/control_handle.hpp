@@ -41,32 +41,26 @@ class ControlHandle {
   void sendMsg();
 
  private:
-  void localMapCallback(const fsd_common_msgs::Map &map);
   void carStateCallback(const fsd_common_msgs::CarState &msg);
-  void transMatCallback(const std_msgs::Float64MultiArray &msgs);
-  void endPointCallback(const geometry_msgs::Point &msgs);
+  void refTrajCallback(const fsd_common_msgs::Trajectory &msg);
+
 
  private:
   ros::NodeHandle nodeHandle_;
 
-  ros::Subscriber localMapSubscriber_;
-  ros::Subscriber transMatSubscriber_;
-  ros::Subscriber endPointSubscriber_;
   ros::Subscriber carStateSubscriber_;
+  ros::Subscriber refTrajectorySubscriber_;
 
   ros::Publisher cmdPublisher_;
-  ros::Publisher refPathPublisher_;
   ros::Publisher prePathPublisher_;
 
   std::string car_state_topic_name_;
-  std::string transform_matrix_topic_name_;
-  std::string end_point_topic_name_;
   std::string map_topic_name_;
   std::string ctrl_cmd_topic_name_;
   std::string predict_path_topic_name_;
   std::string ref_path_topic_name_;
 
-  int node_rate_;
+  int node_rate_{};
 
   Control control_;
 };

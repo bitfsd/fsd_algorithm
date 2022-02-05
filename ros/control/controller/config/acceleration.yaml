@@ -1,7 +1,7 @@
 # Subscriber
 car_state_topic_name: /estimation/slam/state
 
-end_point_topic_name: /planning/end_point
+ref_path_topic_name: /planning/ref_path
 
 # Publisher
 ctrl_cmd_topic_name: /control/pure_pursuit/control_command
@@ -26,11 +26,6 @@ desire_vel: 10.0
 car_length: 1.88
 
 look_ahead: 20
-
-# Track params:
-interval: 0.05
-
-max_lat_acc: 3.0
 
 # other params:
 N: 40

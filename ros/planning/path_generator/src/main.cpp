@@ -1,6 +1,6 @@
 /*
     Formula Student Driverless Project (FSD-Project).
-    Copyright (c) 2021:
+    Copyright (c) 2020:
      - chentairan <tairanchen@bitfsd.cn>
 
     FSD-Project is free software: you can redistribute it and/or modify
@@ -17,16 +17,23 @@
     along with FSD-Project.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#pragma once
-#include "Track/track_base.h"
+#include <ros/ros.h>
+#include "path_generator_handle.hpp"
 
-namespace ns_control {
+typedef ns_path_generator::PathGeneratorHandle PathGeneratorHandle;
 
-class Skidpad_Track : public Track {
-public:
-  bool genTraj();
-  bool CalculateTraj(Trajectory &refline);
-  int now_state = 1;
-};
+int main(int argc, char **argv) {
+  ros::init(argc, argv, "path_generator");
+  ros::NodeHandle nodeHandle("~");
+  PathGeneratorHandle myPathGeneratorHandle(nodeHandle);
+  ros::Rate loop_rate(myPathGeneratorHandle.getNodeRate());
+  while (ros::ok()) {
 
-} // namespace ns_control
+    myPathGeneratorHandle.run();
+
+    ros::spinOnce();                // Keeps node alive basically
+    loop_rate.sleep();              // Sleep for loop_rate
+  }
+  return 0;
+}
+

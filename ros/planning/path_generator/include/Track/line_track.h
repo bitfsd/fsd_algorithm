@@ -20,7 +20,7 @@
 #pragma once
 #include "Track/track_base.h"
 
-namespace ns_control {
+namespace ns_path_generator {
 
 class Line_Track : public Track {
 public:
@@ -28,4 +28,4 @@ public:
   bool CalculateTraj(Trajectory &refline);
 };
 
-} // namespace ns_control
+} // namespace ns_path_generator

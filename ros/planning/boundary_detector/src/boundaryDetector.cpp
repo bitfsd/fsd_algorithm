@@ -306,6 +306,10 @@ void BoundaryDetector::selectBestPath(SearchTree Path, std::vector<PathPoint> &B
                     [&](const Cost_index &a, const Cost_index &b) {
                         return a.cost < b.cost;
                     });
+    if (tree_path.empty()) {
+        ROS_ERROR("empty tree!\n");
+        return;
+    }
     BestPath = tree_path[costSet[0].index];
 
     return;

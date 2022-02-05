@@ -28,9 +28,9 @@ fssim:
   cluster: "/lidar/cones"
 fsd:
   cmd: "/control/pure_pursuit/control_command"
-  state: "/estimation/slam/state"  #车辆位置
-  map: "/map" #全局地图
-  localmap: "/localmap"
+  state: "/estimation/slam/state"  #The position and other basic state of the car
+  map: "/map" #The global map
+  localmap: "/local_map"
   lidar_cluster: "/perception/lidar_cluster"
   tf:
     origin: "/map"

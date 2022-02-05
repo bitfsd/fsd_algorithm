@@ -19,6 +19,8 @@ add_message_files(  # Tell catkin which custom message files to include
   CarState.msg
   CarStateDt.msg
   Map.msg
+  Trajectory.msg
+  TrajectoryPoint.msg
   )
 
 generate_messages(

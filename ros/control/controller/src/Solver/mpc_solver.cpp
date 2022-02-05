@@ -19,6 +19,7 @@
 
 #include "Solver/mpc_solver.h"
 #include "ros/ros.h"
+#include "Utils/param.h"
 #include <cppad/cppad.hpp>
 #include <cppad/ipopt/solve.hpp>
 #include <cmath>
@@ -27,9 +28,9 @@ namespace ns_control {
 
 void MPC_Solver::solve() {
   using CppAD::AD;
-  const size_t N = param_.N;
-  const double dt = param_.dt;
-  const double Lf = param_.car_length;
+  const size_t N = control_param_.N;
+  const double dt = control_param_.dt;
+  const double Lf = control_param_.car_length;
   const int px_range_begin       = 0;
   const int py_range_begin       = px_range_begin    + N;
   const int psi_range_begin      = py_range_begin    + N;
